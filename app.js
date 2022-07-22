@@ -81,11 +81,14 @@ app.post("/", (req, res)=>{
 
     const newCollection = new Collection({
         title: input,
+        items: [],
+        checkedItems: [],
         color: color
     });
 
-    newCollection.save();
-    res.redirect("/");
+    newCollection.save(()=>{
+        res.redirect("/");
+    });
 });
 
 app.post("/addNewTodo", (req, res)=>{
@@ -216,6 +219,6 @@ app.post("/deleteCheckedTodo", (req, res)=>{
 
 let port = process.env.PORT;
 if (port == null || port == "") {
-  port = 8000;
+  port = 5000;
 }
 app.listen(port);
