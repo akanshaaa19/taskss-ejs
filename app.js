@@ -53,8 +53,8 @@ app.get("/", (req, res)=>{
 app.get("/:collectionName", (req, res)=>{
     const title = req.params.collectionName;
 
-    if(title === "tasks-app"){
-        res.render("splash");
+    if(title === "favicon.ico"){
+        res.redirect("/");
     }else{
 
         Collection.findOne({title: title}, (err, foundCollection)=>{
